@@ -1,0 +1,30 @@
+<h1>New Student</h1>
+
+<form action='/schools/<%= @school.id %>/students' method='post'>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    First Name:
+    <input type='text' name='student[first_name]' />
+    Last Name:
+    <input type='text' name='student[last_name]' />
+    Email Address:
+    <input type='text' name='student[email]' />
+    School:
+
+    <select name="student[school_id]">
+    
+    <% @schools.each do |school| %>
+        <% if school.id == @school.id %>
+            <option value="<%= school.id %>" selected="selected"><%= school[:city] %></option>
+        <% else %>
+            <option value="<%= school.id %>"><%= school[:city] %></option>
+        <% end %>
+    <% end %>
+    
+    </select>
+
+    <input type='submit' value='Create' />
+</form>
+<br>
+<br>
+<a href="/schools/index">Home</a> | 
+<a href="/schools/<%= @school.id %>"> <%= @school.city %> </a>

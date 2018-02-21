@@ -1,0 +1,38 @@
+cd first_vagrant_box
+vagrant up
+vagrant ssh
+
+cd /vagrant/controllers_views
+rails new ninja_gold_game
+
+gemfile->
+gem 'hirb'
+gem 'rails-footnotes', '>= 4.0.0', '<5'
+
+bundle install
+rails generate rails_footnotes:install
+
+rails g model School branch:string street:string city:string state:string
+rake db: migrate 
+
+rails g controller Schools index
+
+rails c 
+
+Hirb.enable
+
+School.create(branch:"branch1",street:"street1",city:"city1",state:"state1")
+School.create(branch:"branch2",street:"street2",city:"city2",state:"state2")
+School.create(branch:"branch3",street:"street3",city:"city3",state:"state3")
+School.create(branch:"branch4",street:"street4",city:"city4",state:"state4")
+School.create(branch:"branch5",street:"street5",city:"city5",state:"state5")
+
+rails generate model Student first_name:string last_name:string email:string school:references
+rake db:migrate
+
+rails g controller Students show new edit
+
+Student.create(first_name:"first1", last_name:"last1", email:"email1", school:School.first)
+Student.create(first_name:"first2", last_name:"last2", email:"email2", school:School.first)
+Student.create(first_name:"first3", last_name:"last3", email:"email3", school:School.last)
+Student.create(first_name:"first4", last_name:"last4", email:"email4", school:School.last)

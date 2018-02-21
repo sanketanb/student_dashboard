@@ -1,0 +1,27 @@
+<h2>Add New School</h2>
+
+<form action='/schools' method='post'>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    Branch:
+    <input type='text' name='school[branch]' />
+    Street:
+    <input type='text' name='school[street]' />
+    City:
+    <input type='text' name='school[city]' />
+    State:
+    <input type='text' name='school[state]' />
+    <input type='submit' value='Create' />
+</form>
+
+<% if ! session[:errors].empty? %>
+<div>
+  <h2><%= pluralize(session[:errors].count, " error")%> prohibited this post from being saved:</h2>
+  <ul>
+    <% session[:errors].each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<a href="/schools/index">Go Back</a>

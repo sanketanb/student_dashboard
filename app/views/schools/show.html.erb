@@ -1,0 +1,37 @@
+<h2> Details of <%= @individual.branch %></h2>
+Address: <%= @individual.street %> <br>
+City: <%= @individual.city %> <br>
+State: <%= @individual.state %>
+<br>
+<br>
+<h2> Student Roaster </h2>
+
+<table>
+<thead>
+<tr>
+  <th>First Name</th>
+  <th>Last Name</th>
+  <th>Email</th>
+  <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<% @students.each do |student| %>
+    <tr>
+    <td><%= student.first_name %></td>
+    <td><%= student.last_name %></td>
+    <td><%= student.email %></td>
+    <td>
+    <a href="/schools/<%= @individual.id %>/students/<%= student.id %>"> Show </a> | 
+    <a href="/schools/<%= @individual.id %>/students/<%= student.id %>/edit"> Edit </a> | 
+    <a href="/schools/<%= @individual.id %>/students/<%= student.id %>" data-method="delete" >Destroy</a>
+    </td>
+    </tr>
+<% end %>
+</tbody>
+</table>
+
+<br>
+<br>
+<a href="/schools/index">Home</a> | 
+<a href="/schools/<%= @individual.id %>/students/new"> Add student </a>

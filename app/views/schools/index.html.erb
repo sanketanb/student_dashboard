@@ -1,0 +1,31 @@
+<h1>List of Schools</h1>
+<table>
+    <thead>
+    <tr>
+      <th>Branch</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @schools.each do |school| %>
+        <tr>
+        <td><%= school.branch %></td>
+        <td><%= school.street %></td>
+        <td><%= school.city %></td>
+        <td><%= school.state %></td>
+        <td>
+        <a href="/schools/<%= school.id %>"> Show </a> | 
+        <a href="/schools/<%= school.id %>/edit"> Edit </a> | 
+       
+        <a href="/schools/<%= school.id %>" data-method="delete">Delete!</a>
+        
+
+        </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+<a href="/schools/new">New school </a>

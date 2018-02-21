@@ -1,0 +1,18 @@
+<h2> Editing <%= @individual.branch %></h2>
+
+<form action='/schools/<%= @individual.id %>' method='post'>
+<input type="hidden" name="_method" value="patch">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    Branch:
+    <input type='text' name='school[branch]' value = <%= @individual.branch %> />
+    Street:
+    <input type='text' name='school[street]' value = <%= @individual.street %> />
+    City:
+    <input type='text' name='school[city]' value = <%= @individual.city %> />
+    State:
+    <input type='text' name='school[state]' value = <%= @individual.state %> />
+    <input type='submit' value='Update' />
+</form>
+
+<a href="/schools/index"> Home </a>
+<a href="/schools/<%= @individual.id %>"> Show </a>
